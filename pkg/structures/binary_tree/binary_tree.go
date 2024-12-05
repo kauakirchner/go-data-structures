@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 type TreeNode struct {
 	data  int
@@ -8,12 +10,13 @@ type TreeNode struct {
 	right *TreeNode
 }
 
-func InOrder(root *TreeNode) {
+func InOrder(root *TreeNode) *TreeNode {
 	if root != nil {
 		InOrder(root.left)
 		fmt.Print(root.data, " ")
 		InOrder(root.right)
 	}
+	return root
 }
 
 func main() {
