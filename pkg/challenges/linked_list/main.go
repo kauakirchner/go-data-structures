@@ -28,6 +28,8 @@ func main() {
 	linkedList.removeLastElement()
 	linkedList.insertElementByPostion("random", 3)
 	linkedList.printLinkedListElements()
+	secondElementPosition := linkedList.findElementByData("firt element")
+	fmt.Println("secondElementPosition:", secondElementPosition)
 }
 
 func getALinkedList() *LinkedList {
@@ -45,6 +47,22 @@ func getALinkedList() *LinkedList {
 	}
 
 	return nodes
+}
+
+func (ll *LinkedList) findElementByData(data string) int {
+	current := ll.Head
+
+	count := 1
+
+	for current != nil {
+		if current.Data == data {
+			return count
+		}
+
+		current = current.Next
+		count++
+	}
+	return -1
 }
 
 func (ll *LinkedList) removeElementByPosition(position int) {
