@@ -15,6 +15,9 @@ type Node struct {
 
 func main() {
 	linkedList := getALinkedList()
+	linkedList.printLinkedListElements()
+	linkedList.removeElementByPosition(2)
+	linkedList.printLinkedListElements()
 	fmt.Println("size", linkedList.getLength())
 	linkedList.insertElementAtBeginning("new first element")
 	linkedList.printLinkedListElements()
@@ -42,6 +45,30 @@ func getALinkedList() *LinkedList {
 	}
 
 	return nodes
+}
+
+func (ll *LinkedList) removeElementByPosition(position int) {
+
+	if position <= 0 {
+		return
+	}
+
+	if position == 1 {
+		ll.Head = ll.Head.Next
+		return
+	}
+
+	count := 1
+	previous := ll.Head
+
+	for count < position-1 {
+		previous = previous.Next
+		count++
+	}
+
+	current := previous.Next
+	previous.Next = current.Next
+	current = nil
 }
 
 func (ll *LinkedList) removeFirstElement() {
