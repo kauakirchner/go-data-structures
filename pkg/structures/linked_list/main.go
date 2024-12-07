@@ -24,6 +24,7 @@ func (n *Node) printLinkedListElements() {
 		current = current.Next
 	}
 	fmt.Println("null")
+
 }
 
 func getALinkedList() Node {
